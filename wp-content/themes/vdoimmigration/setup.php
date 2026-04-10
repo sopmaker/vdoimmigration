@@ -12,12 +12,18 @@
  * @package VDOImmigration
  */
 
-// Only allow admins to run this
-define( 'ABSPATH', dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) . '/' );
-require_once dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) . '/wp-load.php';
+$wp_load_path = dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) . '/wp-load.php';
+if ( ! file_exists( $wp_load_path ) ) {
+    exit( 'WordPress bootstrap not found.' );
+}
+require_once $wp_load_path;
 
 if ( ! current_user_can( 'manage_options' ) ) {
     wp_die( 'You do not have permission to run this setup.' );
+}
+
+if ( get_option( 'vdoi_setup_completed' ) && empty( $_GET['rerun'] ) ) {
+    wp_die( 'Setup has already been completed. Append ?rerun=1 to run again.' );
 }
 
 $pages = array(
@@ -231,5 +237,6 @@ foreach ( $created as $item ) {
     echo '<li>' . esc_html( $item ) . '</li>';
 }
 echo '</ul>';
+update_option( 'vdoi_setup_completed', current_time( 'mysql' ) );
 echo '<p><strong>Setup complete! Please delete this file from your server immediately for security.</strong></p>';
 echo '<p><a href="' . esc_url( home_url( '/' ) ) . '">Visit the website &rarr;</a></p>';

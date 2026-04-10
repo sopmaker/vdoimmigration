@@ -1,7 +1,7 @@
 <?php
 /**
- * Pr Pathway Page Template
- * Template Name: Pr Pathway
+ * PR Pathway Page Template
+ * Template Name: PR Pathway
  *
  * @package VDOImmigration
  */

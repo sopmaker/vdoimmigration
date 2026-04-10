@@ -162,9 +162,12 @@ function vdoi_handle_contact_form() {
         wp_send_json_error( array( 'message' => esc_html__( 'Please enter a valid email address.', 'vdoimmigration' ) ) );
     }
 
-    $admin_email   = get_option( 'admin_email' );
-    $site_domain   = wp_parse_url( home_url(), PHP_URL_HOST );
-    $from_email    = $site_domain ? 'no-reply@' . preg_replace( '/^www\./', '', $site_domain ) : $admin_email;
+    $admin_email    = get_option( 'admin_email' );
+    $site_domain    = wp_parse_url( home_url(), PHP_URL_HOST );
+    $clean_domain   = $site_domain ? strtolower( preg_replace( '/[^a-z0-9\.\-]/', '', preg_replace( '/^www\./', '', $site_domain ) ) ) : '';
+    $from_email     = $clean_domain ? 'no-reply@' . $clean_domain : $admin_email;
+    $reply_to_name  = trim( preg_replace( '/[\r\n]+/', ' ', sanitize_text_field( $name ) ) );
+    $reply_to_email = sanitize_email( $email );
     $subject       = sprintf( '[VDO Immigration] New Enquiry from %s', $name );
     $received_time = current_time( 'mysql' );
 
@@ -196,7 +199,7 @@ function vdoi_handle_contact_form() {
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
         'From: ' . sanitize_text_field( get_bloginfo( 'name' ) ) . ' <' . sanitize_email( $from_email ) . '>',
-        "Reply-To: {$name} <{$email}>",
+        'Reply-To: ' . $reply_to_name . ' <' . $reply_to_email . '>',
     );
 
     $sent = wp_mail( $admin_email, $subject, $body, $headers );
