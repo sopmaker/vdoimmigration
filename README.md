@@ -78,6 +78,7 @@ wp-content/
 
 5. **Configure email**:
    - The contact form sends emails to your WordPress admin email
+   - Every enquiry is also saved in WP Admin under **Lead Enquiries** as a backup
    - Configure SMTP via a plugin (e.g., WP Mail SMTP) for reliable email delivery
 
 ---
@@ -91,7 +92,7 @@ wp-content/
 | **Services Grid** | 6 service cards with hover effects, images and CTA links |
 | **Countries Section** | 8 countries with flag emojis, visa types and enquiry links |
 | **Testimonials Carousel** | Swiper slider with 5 client testimonials |
-| **Contact Form** | AJAX-powered form with service/country selection; sends email on submission |
+| **Contact Form** | AJAX-powered form with service/country selection; sends email and stores each lead in WP Admin backup |
 | **WhatsApp Float** | Fixed floating WhatsApp button with tooltip |
 | **AOS Animations** | Scroll-triggered animations throughout |
 | **Responsive** | Fully responsive with Bootstrap 5 grid; optimised for mobile |

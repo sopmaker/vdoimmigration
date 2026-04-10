@@ -30,7 +30,7 @@ function vdoi_contact_form( $show_heading = true ) {
     <div class="vdoi-contact-form-wrap">
         <?php if ( $show_heading ) : ?>
         <h3 class="form-heading"><?php esc_html_e( 'Get a Free Consultation', 'vdoimmigration' ); ?></h3>
-        <p class="form-subheading"><?php esc_html_e( 'Fill in the details below and our expert will reach out to you within 24 hours.', 'vdoimmigration' ); ?></p>
+        <p class="form-subheading"><?php esc_html_e( 'Share your goal and challenge—we will reach out within 24 hours with practical next steps.', 'vdoimmigration' ); ?></p>
         <?php endif; ?>
 
         <form id="vdoi-contact-form" class="vdoi-form" novalidate>

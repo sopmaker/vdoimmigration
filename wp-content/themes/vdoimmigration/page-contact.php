@@ -31,8 +31,8 @@ get_header();
             <!-- Contact Info -->
             <div class="col-lg-4" data-aos="fade-right">
                 <span class="section-badge">Get In Touch</span>
-                <h2 class="section-title">We'd Love to<br>Hear From You</h2>
-                <p class="section-desc">Whether you have a question about our services, want to know your visa eligibility, or are ready to start your application – our team is here to help.</p>
+                <h2 class="section-title">Tell Us Your Goal,<br>We’ll Build Your Path</h2>
+                <p class="section-desc">If you are confused by eligibility, worried about rejection, or unsure what to do next, share your profile with us and get practical guidance you can act on.</p>
 
                 <div class="contact-detail-cards mt-4">
                     <div class="contact-detail-card">
@@ -98,7 +98,7 @@ get_header();
             <div class="col-lg-8" data-aos="fade-left">
                 <div class="contact-form-card contact-form-large">
                     <h3 class="form-heading">Send Us Your Enquiry</h3>
-                    <p class="form-subheading">Complete the form below and our immigration expert will get back to you within <strong>24 hours</strong>.</p>
+                    <p class="form-subheading">Complete the form below and our immigration expert will get back to you within <strong>24 hours</strong> with clear next steps.</p>
                     <?php vdoi_contact_form( false ); ?>
                 </div>
             </div>

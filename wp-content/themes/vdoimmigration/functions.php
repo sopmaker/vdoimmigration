@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'VDOI_VERSION', '1.0.0' );
+define( 'VDOI_VERSION', '1.1.0' );
 define( 'VDOI_DIR', get_template_directory() );
 define( 'VDOI_URI', get_template_directory_uri() );
 
@@ -45,7 +45,7 @@ function vdoi_scripts() {
     // Google Fonts
     wp_enqueue_style(
         'vdoi-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap',
         array(),
         null
     );
@@ -119,17 +119,40 @@ function vdoi_widgets_init() {
 add_action( 'widgets_init', 'vdoi_widgets_init' );
 
 /**
+ * Register lead post type for enquiry backup.
+ */
+function vdoi_register_lead_post_type() {
+    register_post_type( 'vdoi_lead', array(
+        'labels' => array(
+            'name'          => esc_html__( 'Lead Enquiries', 'vdoimmigration' ),
+            'singular_name' => esc_html__( 'Lead Enquiry', 'vdoimmigration' ),
+        ),
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 26,
+        'menu_icon'          => 'dashicons-email-alt2',
+        'supports'           => array( 'title', 'editor', 'custom-fields' ),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'exclude_from_search'=> true,
+        'show_in_nav_menus'  => false,
+    ) );
+}
+add_action( 'init', 'vdoi_register_lead_post_type' );
+
+/**
  * AJAX Contact Form Handler
  */
 function vdoi_handle_contact_form() {
     check_ajax_referer( 'vdoi_contact_nonce', 'nonce' );
 
-    $name        = sanitize_text_field( $_POST['name'] ?? '' );
-    $email       = sanitize_email( $_POST['email'] ?? '' );
-    $phone       = sanitize_text_field( $_POST['phone'] ?? '' );
-    $service     = sanitize_text_field( $_POST['service'] ?? '' );
-    $country     = sanitize_text_field( $_POST['country'] ?? '' );
-    $message     = sanitize_textarea_field( $_POST['message'] ?? '' );
+    $name        = sanitize_text_field( wp_unslash( $_POST['name'] ?? '' ) );
+    $email       = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
+    $phone       = sanitize_text_field( wp_unslash( $_POST['phone'] ?? '' ) );
+    $service     = sanitize_text_field( wp_unslash( $_POST['service'] ?? '' ) );
+    $country     = sanitize_text_field( wp_unslash( $_POST['country'] ?? '' ) );
+    $message     = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
 
     if ( empty( $name ) || empty( $email ) || empty( $phone ) ) {
         wp_send_json_error( array( 'message' => esc_html__( 'Please fill in all required fields.', 'vdoimmigration' ) ) );
@@ -139,10 +162,14 @@ function vdoi_handle_contact_form() {
         wp_send_json_error( array( 'message' => esc_html__( 'Please enter a valid email address.', 'vdoimmigration' ) ) );
     }
 
-    $admin_email = get_option( 'admin_email' );
-    $subject     = sprintf( '[VDO Immigration] New Enquiry from %s', $name );
+    $admin_email   = get_option( 'admin_email' );
+    $site_domain   = wp_parse_url( home_url(), PHP_URL_HOST );
+    $from_email    = $site_domain ? 'no-reply@' . preg_replace( '/^www\./', '', $site_domain ) : $admin_email;
+    $subject       = sprintf( '[VDO Immigration] New Enquiry from %s', $name );
+    $received_time = current_time( 'mysql' );
 
     $body  = "New immigration enquiry received:\n\n";
+    $body .= "Received At: {$received_time}\n";
     $body .= "Name: {$name}\n";
     $body .= "Email: {$email}\n";
     $body .= "Phone: {$phone}\n";
@@ -150,15 +177,34 @@ function vdoi_handle_contact_form() {
     $body .= "Target Country: {$country}\n";
     $body .= "Message:\n{$message}\n";
 
+    $lead_post_id = wp_insert_post( array(
+        'post_type'    => 'vdoi_lead',
+        'post_status'  => 'publish',
+        'post_title'   => sprintf( '%s - %s', $name, $service ? $service : esc_html__( 'General Enquiry', 'vdoimmigration' ) ),
+        'post_content' => $body,
+    ) );
+
+    if ( $lead_post_id && ! is_wp_error( $lead_post_id ) ) {
+        update_post_meta( $lead_post_id, '_vdoi_lead_name', $name );
+        update_post_meta( $lead_post_id, '_vdoi_lead_email', $email );
+        update_post_meta( $lead_post_id, '_vdoi_lead_phone', $phone );
+        update_post_meta( $lead_post_id, '_vdoi_lead_service', $service );
+        update_post_meta( $lead_post_id, '_vdoi_lead_country', $country );
+        update_post_meta( $lead_post_id, '_vdoi_lead_message', $message );
+    }
+
     $headers = array(
         'Content-Type: text/plain; charset=UTF-8',
+        'From: ' . sanitize_text_field( get_bloginfo( 'name' ) ) . ' <' . sanitize_email( $from_email ) . '>',
         "Reply-To: {$name} <{$email}>",
     );
 
     $sent = wp_mail( $admin_email, $subject, $body, $headers );
 
-    if ( $sent ) {
+    if ( $sent && $lead_post_id && ! is_wp_error( $lead_post_id ) ) {
         wp_send_json_success( array( 'message' => esc_html__( 'Thank you! Your enquiry has been received. We will contact you shortly.', 'vdoimmigration' ) ) );
+    } elseif ( $lead_post_id && ! is_wp_error( $lead_post_id ) ) {
+        wp_send_json_success( array( 'message' => esc_html__( 'Thanks! Your enquiry is safely recorded. Our team will call you shortly.', 'vdoimmigration' ) ) );
     } else {
         wp_send_json_error( array( 'message' => esc_html__( 'Something went wrong. Please try again or call us directly.', 'vdoimmigration' ) ) );
     }

@@ -117,6 +117,9 @@ foreach ( $pages as $page_data ) {
 
     if ( $existing ) {
         $page_ids[ $page_data['slug'] ] = $existing->ID;
+        if ( ! empty( $page_data['template'] ) ) {
+            update_post_meta( $existing->ID, '_wp_page_template', $page_data['template'] );
+        }
         $created[] = 'EXISTS: ' . $page_data['title'];
         continue;
     }

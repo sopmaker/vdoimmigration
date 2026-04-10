@@ -66,19 +66,34 @@ get_header();
 
             <div class="col-lg-8" data-aos="fade-left">
                 <span class="section-badge">Founder's Story</span>
-                <h2 class="section-title">A Decade of Transforming<br>Immigration Journeys</h2>
+                <h2 class="section-title">8+ Years of Trusted<br>Immigration Leadership</h2>
 
                 <p class="section-desc">
-                    <strong>Prakash</strong> is the founder and driving force behind VDO Immigration. With over <strong>8.5 years of in-depth experience</strong> in the immigration and study abroad industry, Prakash has built a reputation as one of the most reliable and knowledgeable immigration consultants in the field.
+                    <strong>Prakash</strong> is the founder and driving force behind VDO Immigration. With over <strong>8 years of in-depth experience</strong> in immigration and study-abroad advisory, he is known for clear communication, detail-driven case preparation and practical strategy.
                 </p>
 
                 <p class="section-desc">
-                    His journey in this industry began with a passion for helping students and individuals navigate complex international systems. Over the years, he has worked with thousands of clients – from students seeking higher education abroad to professionals looking for global career opportunities and families seeking to reunite overseas.
+                    His journey in this industry began with a mission to make complex visa systems easier for real people. Over the years, he has guided students, professionals and families through decisions that impact careers, finances and long-term life goals.
                 </p>
 
                 <p class="section-desc">
-                    What truly sets Prakash apart is his <strong>expertise in turning visa refusals into approvals</strong>. Many of his clients came to him after facing one or more rejections from embassies, feeling hopeless and overwhelmed. Through meticulous analysis of each case, strategic repositioning of the application and professional preparation of documentation, Prakash has achieved an outstanding track record of successful reapplications.
+                    What sets Prakash apart is his <strong>ability to convert uncertainty into confident action</strong>. Many clients come after prior refusals or poor guidance. He analyses refusal notes, rebuilds case logic, upgrades documentation quality and helps applicants re-present their profile with strength.
                 </p>
+
+                <div class="founder-communication-grid">
+                    <div class="founder-communication-card">
+                        <h4><i class="fas fa-comments me-2"></i>Excellent Communication</h4>
+                        <p>Clients value his straightforward guidance, prompt responses and ability to explain complex immigration rules in simple language.</p>
+                    </div>
+                    <div class="founder-communication-card">
+                        <h4><i class="fas fa-compass me-2"></i>Case-by-Case Strategy</h4>
+                        <p>Every profile receives tailored planning based on travel history, finances, education, intent and embassy expectations.</p>
+                    </div>
+                    <div class="founder-communication-card">
+                        <h4><i class="fas fa-shield-alt me-2"></i>Refusal Risk Control</h4>
+                        <p>He focuses on preventive quality checks so common rejection triggers are identified before submission.</p>
+                    </div>
+                </div>
 
                 <!-- Quote -->
                 <div class="founder-quote">
@@ -90,11 +105,11 @@ get_header();
                 </div>
 
                 <p class="section-desc mt-4">
-                    Before establishing VDO Immigration, Prakash co-founded and built <strong>Get Admission Abroad</strong>, a renowned study abroad consultancy that continues to serve students seeking international education opportunities. Recognising the growing need for dedicated immigration services, Prakash channelled his expertise into VDO Immigration – a platform exclusively focused on professional immigration assistance.
+                    Before establishing VDO Immigration, Prakash co-founded and built <strong>Get Admission Abroad</strong>, a study-abroad consultancy that continues to support aspiring students. As demand for focused immigration support increased, he launched VDO Immigration as a dedicated immigration-first consultancy.
                 </p>
 
                 <p class="section-desc">
-                    As a passionate writer and advocate, Prakash also runs <a href="https://sop-writer.in" target="_blank" rel="noopener noreferrer"><strong>sop-writer.in</strong></a>, a platform dedicated to helping students craft compelling Statements of Purpose and other application documents that strengthen their cases for universities and embassies alike.
+                    Prakash also leads <a href="https://sop-writer.in" target="_blank" rel="noopener noreferrer"><strong>sop-writer.in</strong></a>, where he supports applicants with high-impact SOP and documentation writing support—an advantage that significantly strengthens many visa and admission files.
                 </p>
             </div>
         </div>

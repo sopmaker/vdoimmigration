@@ -28,7 +28,7 @@ $countries = vdoi_get_countries();
                                 <span class="hero-title-accent">Dream Into Reality</span>
                             </h1>
                             <p class="hero-subtitle" data-aos="fade-right" data-aos-delay="200">
-                                Get admission in your dream university in Canada, UK, Australia or the US with expert guidance at every step.
+                                Worried about refusals, financial documents or SOP quality? We build a clear strategy so your study visa file looks credible, complete and decision-ready.
                             </p>
                             <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
                                 <a href="<?php echo esc_url( home_url( '/services/study-visa/' ) ); ?>" class="btn btn-primary-vdoi btn-lg">
@@ -55,7 +55,7 @@ $countries = vdoi_get_countries();
                                 <span class="hero-title-accent">Hassle-Free</span>
                             </h1>
                             <p class="hero-subtitle">
-                                From Schengen to North America, we make your travel dreams a reality with smooth and efficient tourist visa processing.
+                                Avoid rejection triggers like weak travel purpose or poor documentation—our team prepares your profile to maximise confidence at submission.
                             </p>
                             <div class="hero-buttons">
                                 <a href="<?php echo esc_url( home_url( '/services/tourist-visa/' ) ); ?>" class="btn btn-primary-vdoi btn-lg">
@@ -82,7 +82,7 @@ $countries = vdoi_get_countries();
                                 <span class="hero-title-accent">With Confidence</span>
                             </h1>
                             <p class="hero-subtitle">
-                                Professional work visa assistance for skilled professionals seeking opportunities in Canada, Australia, UK and beyond.
+                                From eligibility to offer-linked paperwork, we simplify the full work visa journey so you can focus on your career move, not confusion.
                             </p>
                             <div class="hero-buttons">
                                 <a href="<?php echo esc_url( home_url( '/services/work-visa/' ) ); ?>" class="btn btn-primary-vdoi btn-lg">
@@ -109,7 +109,7 @@ $countries = vdoi_get_countries();
                                 <span class="hero-title-accent">Your Forever Home</span>
                             </h1>
                             <p class="hero-subtitle">
-                                Navigate the complex PR pathway with expert guidance. From eligibility assessment to final approval, we are with you every step.
+                                PR pathways can feel overwhelming. We break down points, timelines and document strategy into an actionable plan you can trust.
                             </p>
                             <div class="hero-buttons">
                                 <a href="<?php echo esc_url( home_url( '/services/pr-pathway/' ) ); ?>" class="btn btn-primary-vdoi btn-lg">
@@ -174,6 +174,32 @@ $countries = vdoi_get_countries();
     </div>
 </section>
 
+<!-- ===== CLIENT CONFIDENCE STRIP ===== -->
+<section class="confidence-strip">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="confidence-item">
+                    <h3>Clarity Before Commitment</h3>
+                    <p>Get a practical eligibility view and transparent next steps before spending on the process.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="confidence-item">
+                    <h3>Communication You Can Trust</h3>
+                    <p>Timely updates, quick answers and founder-led guidance so you never feel lost in the journey.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="confidence-item">
+                    <h3>Comfort Through Preparation</h3>
+                    <p>We reduce stress with complete checklists, quality SOP support and proactive refusal-risk control.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ===== STATS SECTION ===== -->
 <section class="stats-section">
     <div class="container">
@@ -220,7 +246,7 @@ $countries = vdoi_get_countries();
         <div class="section-header text-center" data-aos="fade-up">
             <span class="section-badge">What We Offer</span>
             <h2 class="section-title">Our Immigration Services</h2>
-            <p class="section-subtitle">From study visas to permanent residency, we offer comprehensive immigration solutions tailored to your needs.</p>
+            <p class="section-subtitle">Designed around real client problems: refusal history, documentation gaps, low confidence and deadline pressure.</p>
         </div>
         <div class="row g-4 mt-2">
             <?php foreach ( $services as $index => $service ) : ?>
@@ -252,8 +278,8 @@ $countries = vdoi_get_countries();
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <span class="section-badge">Why Choose Us</span>
-                <h2 class="section-title">Your Immigration Success<br>is Our Mission</h2>
-                <p class="section-desc">At VDO Immigration, we go beyond just filing paperwork. Our team ensures your case is professionally presented to the embassy, giving your application the best possible chance of success.</p>
+                <h2 class="section-title">Strategy, Communication,<br>and Calm Execution</h2>
+                <p class="section-desc">We do more than submit files. We diagnose risk early, strengthen every supporting document, and keep you informed at each milestone so your decision journey feels controlled.</p>
 
                 <div class="why-features mt-4">
                     <div class="why-feature-item">
@@ -308,7 +334,7 @@ $countries = vdoi_get_countries();
         <div class="section-header text-center" data-aos="fade-up">
             <span class="section-badge">How It Works</span>
             <h2 class="section-title">Our Simple 4-Step Process</h2>
-            <p class="section-subtitle">Getting your visa has never been this straightforward. We handle the complexity so you don't have to.</p>
+            <p class="section-subtitle">A structured workflow that removes uncertainty and builds embassy-ready confidence.</p>
         </div>
         <div class="row g-4 mt-3">
             <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="0">
@@ -517,7 +543,7 @@ $countries = vdoi_get_countries();
             <div class="col-lg-5" data-aos="fade-right">
                 <span class="section-badge">Get In Touch</span>
                 <h2 class="section-title">Start Your Visa Journey<br>With a Free Consultation</h2>
-                <p class="section-desc">Take the first step towards your immigration goals. Fill in the form and our expert will reach out to you personally within 24 hours.</p>
+                <p class="section-desc">Tell us your goal and current challenge. We will review your case and connect with a practical action plan within 24 hours.</p>
 
                 <div class="contact-info-cards mt-4">
                     <div class="contact-info-item">
